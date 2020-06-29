@@ -26,7 +26,6 @@ public class User {
 	private Map<String, Object> sessionMap = FacesContext.getCurrentInstance().getExternalContext().getSessionMap();
 	Connection connection;
 	
-
 	public int getId() {
 		return id;
 	}
@@ -83,9 +82,6 @@ public class User {
 		}
 		return connection;
 	}
-// Used to establish connection  
-	
-// Used to fetch all records  
 	public ArrayList usersList() {
 		try {
 			System.out.println("connection to mysql");
@@ -110,7 +106,6 @@ public class User {
 		return usersList;
 	}
 
-// Used to save user record  
 	public String save() {
 		int result = 0;
 		try {
@@ -133,7 +128,7 @@ public class User {
 			return "create.xhtml?faces-redirect=true";
 	}
 
-// Used to fetch record to update  
+
 	public String edit(int id) {
 		User user = null;
 		System.out.println(id);
@@ -158,9 +153,8 @@ public class User {
 		return "/edit.xhtml?faces-redirect=true";
 	}
 
-// Used to update user record  
-	public String update(User u) {
-//int result = 0;  
+ 
+	public String update(User u) { 
 		try {
 			connection = getConnection();
 			PreparedStatement stmt = connection
@@ -179,7 +173,7 @@ public class User {
 		return "/index.xhtml?faces-redirect=true";
 	}
 
-// Used to delete user record  
+
 	public void delete(int id) {
 		try {
 			connection = getConnection();
@@ -189,8 +183,6 @@ public class User {
 			System.out.println(e);
 		}
 	}
-
-// Used to set user gender  
 	public String getGenderName(char gender) {
 		if (gender == 'M') {
 			return "Male";
